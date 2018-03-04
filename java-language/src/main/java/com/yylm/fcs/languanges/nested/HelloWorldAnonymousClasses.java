@@ -28,70 +28,71 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.yylm.fcs.languanges.nested;
 
 /**
- * java 内部类的使用示例， java集合类的迭代器都是用内部类实现。
+ * 匿名类的使用示例。
  * 
- * @see https://docs.oracle.com/javase/tutorial/java/javaOO/innerclasses.html
+ * @See https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
  *
  */
-public class DataStructure {
+public class HelloWorldAnonymousClasses {
 
-	// Create an array
-	private final static int SIZE = 15;
-	private int[] arrayOfInts = new int[SIZE];
+	interface HelloWorld {
+		public void greet();
 
-	public DataStructure() {
-		// fill the array with ascending integer values
-		for (int i = 0; i < SIZE; i++) {
-			arrayOfInts[i] = i;
-		}
+		public void greetSomeone(String someone);
 	}
 
-	public void printEven() {
-		// Print out values of even indices of the array
-		DataStructureIterator iterator = this.new EvenIterator();
-		while (iterator.hasNext()) {
-			System.out.print(iterator.next() + " ");
-		}
-		System.out.println();
-	}
+	public void sayHello() {
 
-	interface DataStructureIterator extends java.util.Iterator<Integer> {
-	}
+		class EnglishGreeting implements HelloWorld {
+			String name = "world";
 
-	// Inner class implements the DataStructureIterator interface,
-	// which extends the Iterator<Integer> interface
+			public void greet() {
+				greetSomeone("world");
+			}
 
-	private class EvenIterator implements DataStructureIterator {
-
-		// Start stepping through the array from the beginning
-		private int nextIndex = 0;
-
-		public boolean hasNext() {
-
-			// Check if the current element is the last in the array
-			return (nextIndex <= SIZE - 1);
+			public void greetSomeone(String someone) {
+				name = someone;
+				System.out.println("Hello " + name);
+			}
 		}
 
-		public Integer next() {
+		HelloWorld englishGreeting = new EnglishGreeting();
 
-			// Record a value of an even index of the array
-			Integer retValue = Integer.valueOf(arrayOfInts[nextIndex]);
+		HelloWorld frenchGreeting = new HelloWorld() {
+			String name = "tout le monde";
 
-			// Get the next even element
-			nextIndex += 2;
-			return retValue;
-		}
+			public void greet() {
+				greetSomeone("tout le monde");
+			}
+
+			public void greetSomeone(String someone) {
+				name = someone;
+				System.out.println("Salut " + name);
+			}
+		};
+
+		HelloWorld spanishGreeting = new HelloWorld() {
+			String name = "mundo";
+
+			public void greet() {
+				greetSomeone("mundo");
+			}
+
+			public void greetSomeone(String someone) {
+				name = someone;
+				System.out.println("Hola, " + name);
+			}
+		};
+		englishGreeting.greet();
+		frenchGreeting.greetSomeone("Fred");
+		spanishGreeting.greet();
 	}
 
-	public static void main(String s[]) {
-
-		// Fill the array with integer values and print out only
-		// values of even indices
-		DataStructure ds = new DataStructure();
-		ds.printEven();
+	public static void main(String... args) {
+		HelloWorldAnonymousClasses myApp = new HelloWorldAnonymousClasses();
+		myApp.sayHello();
 	}
 }

@@ -1,5 +1,12 @@
 package com.yylm.fcs.languanges.nested;
 
+/**
+ * java 内部类成员的可见性
+ * 
+ * java 内部类通过this指针引用外部类对象属性
+ * 
+ * @See https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
+ */
 public class ShadowTest {
 
 	public int x = 0;
