@@ -47,5 +47,6 @@
 	</build>
 	<modules>
 		<module>java-language</module>
+		<module>java-concurrency</module>
 	</modules>
 </project>
