@@ -1,7 +1,7 @@
 package com.yylm.fcs.concurrency.basic;
 
 /**
- * The SimpleThreads Example. show usage of Thread.
+ * Show usage of Thread join/interrupt/isAlive
  * 
  * @See https://docs.oracle.com/javase/tutorial/essential/concurrency/simple.html
  *
