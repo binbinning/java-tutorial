@@ -33,6 +33,20 @@ package com.yylm.fcs.languanges.nested;
 /**
  * 匿名类的使用示例。
  * 
+ * 访问规则
+ * <ul>
+ * <li>An anonymous class has access to the members of its enclosing class.</li>
+ * <li>An anonymous class cannot access local variables in its enclosing scope
+ * that are not declared as final or effectively final.</li>
+ * </ul>
+ * 
+ * Anonymous classes also have the same restrictions as local classes with
+ * respect to their members:
+ * <li>You cannot declare static initializers or member interfaces in an
+ * anonymous class.</li>
+ * <li>An anonymous class can have static members provided that they are
+ * constant variables.</li>
+ * 
  * @See https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
  *
  */
