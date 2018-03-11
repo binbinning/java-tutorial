@@ -32,6 +32,8 @@ public class JavaUI extends Application {
 				System.out.println("Hello World!");
 			}
 		});
+		// lamda usage
+		// btn.setOnAction(event -> System.out.println("Hello World!"));
 
 		StackPane root = new StackPane();
 		root.getChildren().add(btn);
