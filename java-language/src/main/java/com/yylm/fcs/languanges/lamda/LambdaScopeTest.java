@@ -30,7 +30,22 @@ public class LambdaScopeTest {
 				System.out.println("LambdaScopeTest.this.x = " + LambdaScopeTest.this.x);
 			};
 
+			/**
+			 * Lamda的匿名内部类对等实现
+			 */
+			Consumer<Integer> myConsumer1 = new Consumer<Integer>() {
+				@Override
+				public void accept(Integer y) {
+					System.out.println("x = " + x); // Statement A
+					System.out.println("y = " + y);
+					// compile error
+					// System.out.println("this.x = " + this.x);
+					System.out.println("LambdaScopeTest.this.x = " + LambdaScopeTest.this.x);
+				}
+			};
+
 			myConsumer.accept(x);
+			myConsumer1.accept(x);
 
 		}
 	}

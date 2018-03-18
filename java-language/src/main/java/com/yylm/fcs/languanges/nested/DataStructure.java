@@ -31,6 +31,8 @@
 
 package com.yylm.fcs.languanges.nested;
 
+import java.util.function.Function;
+
 /**
  * java 内部类的使用示例， java集合类的迭代器都是用内部类实现。
  * 
@@ -55,6 +57,61 @@ public class DataStructure {
 		DataStructureIterator iterator = this.new EvenIterator();
 		while (iterator.hasNext()) {
 			System.out.print(iterator.next() + " ");
+		}
+		System.out.println();
+	}
+
+	/**
+	 * Exercises
+	 * 
+	 * @param iterator
+	 */
+	public void print(DataStructureIterator iterator) {
+		// Print out values of even indices of the array
+		while (iterator.hasNext()) {
+			System.out.print(iterator.next() + " ");
+		}
+		System.out.println();
+	}
+
+	/**
+	 * Exercises, anonymous class
+	 * 
+	 * @param iterator
+	 */
+	public void printOdd() {
+		this.print(new DataStructureIterator() {
+			// Start stepping through the array from the beginning
+			private int nextIndex = 1;
+
+			@Override
+			public Integer next() {
+				// Record a value of an even index of the array
+				Integer retValue = Integer.valueOf(arrayOfInts[nextIndex]);
+
+				// Get the next even element
+				nextIndex += 2;
+				return retValue;
+			}
+
+			@Override
+			public boolean hasNext() {
+				// Check if the current element is the last in the array
+				return (nextIndex <= SIZE - 1);
+			}
+		});
+	}
+
+	/**
+	 * Exercises function interface and lamda usage
+	 * 
+	 * @param iterator
+	 */
+	public void print(Function<Integer, Boolean> iterator) {
+		for (int i = 0; i <= SIZE - 1; i++) {
+			if (iterator.apply(i)) {
+				System.out.print(arrayOfInts[i] + " ");
+			}
 		}
 		System.out.println();
 	}
@@ -87,11 +144,32 @@ public class DataStructure {
 		}
 	}
 
+	static Boolean isEvenIndex(Integer index) {
+		return index % 2 == 0;
+	}
+
+	static Boolean isOddIndex(Integer index) {
+		return index % 2 != 0;
+	}
+
 	public static void main(String s[]) {
 
 		// Fill the array with integer values and print out only
 		// values of even indices
 		DataStructure ds = new DataStructure();
 		ds.printEven();
+
+		EvenIterator itr = ds.new EvenIterator();
+		ds.print(itr);
+
+		ds.printOdd();
+
+		// lamda expression
+		ds.print(index -> index % 2 == 0);
+		ds.print(index -> index % 2 != 0);
+
+		// method reference
+		ds.print(DataStructure::isEvenIndex);
+		ds.print(DataStructure::isOddIndex);
 	}
 }
