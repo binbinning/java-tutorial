@@ -1,5 +1,7 @@
 package com.yylm.fcs.languanges.concept;
 
+import com.yylm.fcs.languanges.annotation.*;
+
 /**
  * 
  * What Is a Class?
@@ -9,6 +11,9 @@ package com.yylm.fcs.languanges.concept;
  * {@link https://docs.oracle.com/javase/tutorial/java/concepts/class.html}
  *
  */
+@ClassPreamble(author = "Java tutorial", date = "3/17/2018", currentRevision = 1, lastModified = "4/12/2018", lastModifiedBy = "Nick Ning",
+		// Note array notation
+		reviewers = { "Tony", "Lank", "Suc" })
 public class Bicycle {
 	int cadence = 0;
 	int speed = 0;
