@@ -4,8 +4,9 @@ import java.util.function.Consumer;
 
 /**
  * 
- * lamda作用域
- *
+ * lamda作用域 - lambda expressions do not have any shadowing issues. Lambda
+ * expressions are lexically scoped. you can directly access fields, methods,
+ * and local variables of the enclosing scope.
  */
 public class LambdaScopeTest {
 
