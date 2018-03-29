@@ -1,6 +1,5 @@
 package com.yylm.fcs.languanges.interfaces.card;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

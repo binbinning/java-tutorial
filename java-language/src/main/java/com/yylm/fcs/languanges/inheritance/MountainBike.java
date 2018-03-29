@@ -1,6 +1,7 @@
 package com.yylm.fcs.languanges.inheritance;
 
 import com.yylm.fcs.languanges.concept.Bicycle;
+import com.yylm.fcs.languanges.utils.AnalyzeUtil;
 
 /**
  * 
@@ -30,11 +31,7 @@ public class MountainBike extends Bicycle {
 		@SuppressWarnings("unused")
 		MountainBike bike = new MountainBike(0, 0, 0, 0);
 
-		// 便于visualvm查看jvm内存对象
-		try {
-			Thread.sleep(1000 * 60 * 5);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		// 暂停便于visualvm查看jvm内存对象
+		AnalyzeUtil.waitForVisualVM();
 	}
 }
