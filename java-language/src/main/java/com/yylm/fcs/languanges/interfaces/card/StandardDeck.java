@@ -1,5 +1,6 @@
 package com.yylm.fcs.languanges.interfaces.card;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -139,10 +140,75 @@ public class StandardDeck implements Deck {
 		 * </pre>
 		 */
 
+		/**
+		 * 字节码
+		 * 
+		 * <pre>
+		75: aload_1
+		76: invokedynamic #237,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+		81: invokestatic  #238                // InterfaceMethod java/util/Comparator.comparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+		84: invokedynamic #244,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+		89: invokestatic  #238                // InterfaceMethod java/util/Comparator.comparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+		92: invokeinterface #245,  2          // InterfaceMethod java/util/Comparator.thenComparing:(Ljava/util/Comparator;)Ljava/util/Comparator;
+		97: invokevirtual #233                // Method sort:(Ljava/util/Comparator;)V
+		 * </pre>
+		 * 
+		 * 表达式的完全展开
+		 * 
+		 * <pre>
+		 * 
+		 * 1. 最原始的实现是116行的anonymous implementation和131行的lamda implementation
+		 *     myDeck.sort((firstCard, secondCard) -> firstCard.getRank().value() - secondCard.getRank().value()); 
+		 * 
+		 * 2. compartor自身实现了一个default method可以通过comparing返回comparator实例
+		 *     myDeck.sort(Comparator.comparing((card) -> card.getRank()));  
+		 *     
+		 *     comparing的内部实现返回一个lamda表达式，等于161行
+		 *        return (c1, c2) -> keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));
+		 *
+		 * 3. 据此，lamda替换为method reference
+		 * 	   myDeck.sort(Comparator.comparing(Card::getRank));  
+		 * 
+		 * 4. 多条件排序
+		 *   Comparator.thenComparing()的实现比较绕，多级lamda + functional interface + method reference
+		 *    c1 = Comparator.comparing(Card::getRank);
+		 *    c2 = Comparator.comparing(Card::getSuit);
+		 *    c3 = c1.thenComparing(c2){
+		 * 		c1.compare(c1,c2);
+		 *      c2.compare(c1,c2);
+		 * }
+		 * </pre>
+		 */
 		myDeck.sort(Comparator.comparing(Card::getRank).thenComparing(Comparator.comparing(Card::getSuit)));
 		System.out.println("Sorted by rank, then by suit " + "with static and default methods");
 		System.out.println(myDeck.deckToString());
 
+		/**
+		 * 
+		 * <pre>
+		 * 
+		 * 5. reverse order
+		 * 
+		 * Comparator.comparing(Card::getRank).reversed();
+		 * 
+		 * new Comparator<Card>(){
+		 *    public int compare(Card firstCard, Card secondCard) {
+		 * 		return firstCard.getRank().compareTo(secondCard.getRank());
+		 * 
+		 *    default Comparator<T> reversed() {
+			          if (cmp == null)
+				            return reverseOrder();
+				
+				        if (cmp instanceof ReverseComparator2)
+				            return ((ReverseComparator2<T>)cmp).cmp;
+				
+				        return new ReverseComparator2<>(cmp);
+			    }		
+		 * 
+		 * }
+		 * 
+		 * </pre>
+		 */
 		myDeck.sort(Comparator.comparing(Card::getRank).reversed().thenComparing(Comparator.comparing(Card::getSuit)));
 		System.out.println("Sorted by rank reversed, then by suit " + "with static and default methods");
 		System.out.println(myDeck.deckToString());
