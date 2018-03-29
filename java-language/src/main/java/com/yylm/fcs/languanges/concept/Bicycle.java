@@ -15,9 +15,20 @@ import com.yylm.fcs.languanges.annotation.*;
 		// Note array notation
 		reviewers = { "Tony", "Lank", "Suc" })
 public class Bicycle {
-	int cadence = 0;
-	int speed = 0;
-	int gear = 1;
+	private int cadence = 0;
+	private int speed = 0;
+	private int gear = 1;
+
+	public Bicycle() {
+		super();
+	}
+
+	// the Bicycle class has one constructor
+	public Bicycle(int startCadence, int startSpeed, int startGear) {
+		gear = startGear;
+		cadence = startCadence;
+		speed = startSpeed;
+	}
 
 	void changeCadence(int newValue) {
 		cadence = newValue;
