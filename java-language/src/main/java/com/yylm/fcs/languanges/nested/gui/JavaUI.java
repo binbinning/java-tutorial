@@ -1,4 +1,4 @@
-package com.yylm.fcs.languanges.nested;
+package com.yylm.fcs.languanges.nested.gui;
 
 /**
  * 匿名内部类在java ui中广泛使用，用于事件处理
