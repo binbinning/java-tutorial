@@ -14,6 +14,7 @@ import com.yylm.fcs.languanges.utils.AnalyzeUtil;
  *
  */
 public class Overriding_Hiding_Methods {
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		Cat myCat = new Cat();
 		Animal_ myAnimal = myCat;
@@ -30,6 +31,7 @@ public class Overriding_Hiding_Methods {
 		Animal_.testClassMethod();
 		// 检查方法表
 		AnalyzeUtil.printMethodSignatures(myAnimal);
+		myAnimal.testClassMethod(); // 编译期解析 invokestatic
 		myAnimal.testInstanceMethod();
 	}
 }

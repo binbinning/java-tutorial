@@ -5,7 +5,8 @@ import java.lang.reflect.Method;
 /**
  * 
  * java语言学习分析工具
- *
+ * 
+ * @author ningjb
  */
 public class AnalyzeUtil {
 	/**
