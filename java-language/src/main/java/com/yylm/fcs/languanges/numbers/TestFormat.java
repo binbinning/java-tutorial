@@ -34,5 +34,29 @@ public class TestFormat {
 		System.out.format("%tl:%tM %tp%n", c, c, c); // --> "2:34 am"
 
 		System.out.format("%tD%n", c); // --> "05/29/06"
+
+		convertion();
 	}
+
+	// 格式转换
+	public static void convertion() {
+		System.out.println("格式转换");
+		// 字符串转换为数字型
+		// 最终调用的是java.lang.Integer.parseInt(String, int);
+		System.out.println("Integer.parseInt(\"128\") = " + Integer.parseInt("128")); // 10进制
+		System.out.println("Integer.parseInt(\"10000000\", 2) = " + Integer.parseInt("10000000", 2)); // 2进制
+		System.out.println("Integer.valueOf(\"0xf0\", 16) = " + Integer.valueOf("80", 16)); // 16进制
+
+		// String自带进制表示，使用decode
+		System.out.println("Integer.decode(\"0xf0\")=" + Integer.decode("0x80")); // 16进制
+
+		// int to string
+		System.out.println(Integer.toString(128));
+
+		// 进制转换
+		System.out.println("Integer.toBinaryString(128) = " + Integer.toBinaryString(128));
+		System.out.println("Integer.toOctalString(0x80) = " + Integer.toOctalString(0x80));
+		System.out.println("Integer.toHexString(128)" + Integer.toHexString(128));
+	}
+
 }
