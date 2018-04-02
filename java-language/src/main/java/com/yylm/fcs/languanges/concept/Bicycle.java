@@ -28,6 +28,7 @@ public class Bicycle {
 		gear = startGear;
 		cadence = startCadence;
 		speed = startSpeed;
+		printStates(); // 构造方法中调用的如果不是final，则会被子类改变行为
 	}
 
 	void changeCadence(int newValue) {
@@ -46,7 +47,7 @@ public class Bicycle {
 		speed = speed - decrement;
 	}
 
-	void printStates() {
+	public void printStates() {
 		System.out.println("cadence:" + cadence + " speed:" + speed + " gear:" + gear);
 	}
 }

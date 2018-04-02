@@ -27,9 +27,15 @@ public class MountainBike extends Bicycle {
 		return seatHeight;
 	}
 
+	@Override
+	public void printStates() {
+		// super.printStates();
+		System.out.println("seatHeight:" + seatHeight);
+	}
+
 	public static void main(String[] args) {
-		@SuppressWarnings("unused")
 		MountainBike bike = new MountainBike(0, 0, 0, 0);
+		AnalyzeUtil.printMethodSignatures(bike);
 
 		// 暂停便于visualvm查看jvm内存对象
 		AnalyzeUtil.waitForVisualVM();
