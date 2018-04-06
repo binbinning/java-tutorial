@@ -9,6 +9,9 @@ import java.lang.reflect.Method;
  * @author ningjb
  */
 public class AnalyzeUtil {
+	// set DEBUG = false and compile to stop debug messages
+	final static boolean DEBUG = true;
+
 	/**
 	 * 检查对象的方法表
 	 * 
@@ -37,7 +40,9 @@ public class AnalyzeUtil {
 	}
 
 	public static void log(String str) {
-		System.out.print(str);
+		if (DEBUG) {
+			System.out.print(str);
+		}
 	}
 
 	/**
