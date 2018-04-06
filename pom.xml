@@ -51,5 +51,6 @@
 	<modules>
 		<module>java-language</module>
 		<module>java-concurrency</module>
+		<module>java-essential-classes</module>
 	</modules>
 </project>
