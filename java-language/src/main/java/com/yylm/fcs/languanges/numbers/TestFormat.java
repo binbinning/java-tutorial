@@ -6,8 +6,13 @@ import java.util.Locale;
 /**
  * 
  * The following program shows some of the formatting that you can do with
- * format. The output is shown within double quotes in the embedded comment:
- *
+ * format. The output is shown within double quotes in the embedded comment.
+ * 
+ * Format specifiers begin with a percent sign (%) and end with a converter. The
+ * converter is a character indicating the type of argument to be formatted. In
+ * between the percent sign (%) and the converter you can have optional flags
+ * and specifiers.
+ * 
  * @see https://docs.oracle.com/javase/tutorial/java/data/numberformat.html
  */
 public class TestFormat {
