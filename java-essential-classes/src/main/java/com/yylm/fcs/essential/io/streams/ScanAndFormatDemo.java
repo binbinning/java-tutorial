@@ -29,7 +29,7 @@ public class ScanAndFormatDemo {
 		Scanner s = null;
 
 		try {
-			s = new Scanner(new BufferedReader(new FileReader("target/xanadu.txt")));
+			s = new Scanner(new BufferedReader(new FileReader("src/main/resources/xanadu.txt")));
 			while (s.hasNext()) {
 				System.out.println(s.next());
 			}
@@ -50,7 +50,7 @@ public class ScanAndFormatDemo {
 		double sum = 0;
 
 		try {
-			s = new Scanner(new BufferedReader(new FileReader("target/usnumbers.txt")));
+			s = new Scanner(new BufferedReader(new FileReader("src/main/resources/usnumbers.txt")));
 			s.useLocale(Locale.US);
 
 			while (s.hasNext()) {
