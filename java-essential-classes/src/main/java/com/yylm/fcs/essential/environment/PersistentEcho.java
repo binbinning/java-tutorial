@@ -8,10 +8,29 @@ import java.io.IOException;
 /**
  * Exercises
  * 
+ * Write an application, PersistentEcho, with the following features:
+ * 
+ * <ul>
+ * <li>If PersistentEcho is run with command line arguments, it prints out those
+ * arguments. It also saves the string printed out to a property, and saves the
+ * property to a file called PersistentEcho.txt</li>
+ * 
+ * <li>If PersistentEcho is run with no command line arguments, it looks for an
+ * environment variable called PERSISTENTECHO. If that variable exists,
+ * PersistentEcho prints out its value, and also saves the value in the same way
+ * it does for command line arguments.</li>
+ * 
+ * <li>If PersistentEcho is run with no command line arguments, and the
+ * PERSISTENTECHO environment variable is not defined, it retrieves the property
+ * value from PersistentEcho.txt and prints that out.
+ * <li>
+ * </ul>
+ * 
  * @see https://docs.oracle.com/javase/tutorial/essential/environment/QandE/answers.html
  *
  */
 public class PersistentEcho {
+
 	public static void main(String[] args) {
 		String argString = "";
 		boolean notProperty = true;
@@ -23,20 +42,17 @@ public class PersistentEcho {
 			}
 			argString = argString.trim();
 		} else if ((argString = System.getenv("PERSISTENTECHO")) != null) {
-			// No arguments, is there an environment variable? If so, retrieve
-			// it.
+			// No arguments, is there an environment variable?
+			// If so, retrieve it.
 		} else {
 			// No environment variable either. Retrieve property value.
 			notProperty = false;
-			// Set argString to null.
-			// If it's still null after
-			// we exit the try block,
-			// we've failed to retrieve
-			// the property value.
+			// Set argString to null. If it's still null after we exit the try block,
+			// we've failed to retrieve the property value.
 			argString = null;
 			FileInputStream fileInputStream = null;
 			try {
-				fileInputStream = new FileInputStream("PersistentEcho.txt");
+				fileInputStream = new FileInputStream("target/PersistentEcho.txt");
 				Properties inProperties = new Properties();
 				inProperties.load(fileInputStream);
 				argString = inProperties.getProperty("argString");
