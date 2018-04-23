@@ -9,4 +9,11 @@
 	<artifactId>java-essential-classes</artifactId>
 	<name>java-essential-classes</name>
 	<description>https://docs.oracle.com/javase/tutorial/essential/index.html</description>
+	<dependencies>
+		<dependency>
+			<groupId>com.yylm.fcs</groupId>
+			<artifactId>java-language</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
