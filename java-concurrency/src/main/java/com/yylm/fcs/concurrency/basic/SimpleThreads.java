@@ -3,6 +3,12 @@ package com.yylm.fcs.concurrency.basic;
 /**
  * Show usage of Thread join/interrupt/isAlive
  * 
+ * The main thread creates a new thread from the Runnable object, MessageLoop,
+ * and waits for it to finish. If the MessageLoop thread takes too long to
+ * finish, the main thread interrupts it.The MessageLoop thread prints out a
+ * series of messages. If interrupted before it has printed all its messages,
+ * the MessageLoop thread prints a message and exits.
+ * 
  * @See https://docs.oracle.com/javase/tutorial/essential/concurrency/simple.html
  *
  */

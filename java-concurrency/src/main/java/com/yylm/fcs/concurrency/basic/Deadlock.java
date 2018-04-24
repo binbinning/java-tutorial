@@ -20,7 +20,7 @@ public class Deadlock {
 		}
 
 		public synchronized void bow(Friend bower) {
-			System.out.format("%s: %s" + "  has bowed to me!%n", this.name, bower.getName());
+			System.out.format("%s: %s" + " has bowed to me!%n", this.name, bower.getName());
 			bower.bowBack(this);
 		}
 
@@ -30,21 +30,21 @@ public class Deadlock {
 	}
 
 	public static void main(String[] args) {
-		final Friend alphonse = new Friend("Alphonse");
-		final Friend gaston = new Friend("Gaston");
+		final Friend lilei = new Friend("Li Lei");
+		final Friend hanmeimei = new Friend("Han Meimei");
 		new Thread(new Runnable() {
 			public void run() {
-				alphonse.bow(gaston);
+				lilei.bow(hanmeimei);
 			}
 		}).start();
-		// try {
-		// Thread.sleep(1000);
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		new Thread(new Runnable() {
 			public void run() {
-				gaston.bow(alphonse);
+				hanmeimei.bow(lilei);
 			}
 		}).start();
 	}
