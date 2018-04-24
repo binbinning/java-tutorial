@@ -24,9 +24,7 @@ public class RegexTestHarness {
 		}
 
 		while (true) {
-
 			Pattern pattern = Pattern.compile(console.readLine("%nEnter your regex: "));
-
 			Matcher matcher = pattern.matcher(console.readLine("Enter input string to search: "));
 
 			boolean found = false;

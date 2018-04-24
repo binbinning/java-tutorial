@@ -8,10 +8,14 @@ java 语言基础内容
 4. enumeration
 5. lamda
 6. interface
-7. 集成和多态
+7. 继承和多态
 8. 泛型 - generics
 
 java.lang基础类
 1. String
 2. Number 
+
+Todo: 
+1. 集成Generics章节
+https://docs.oracle.com/javase/tutorial/extra/generics/index.html
     
