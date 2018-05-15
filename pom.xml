@@ -54,5 +54,6 @@
 		<module>java-essential-classes</module>
 		<module>java-network</module>
     <module>java-network-web</module>
-  </modules>
+    <module>java-jdbc</module>
+	</modules>
 </project>
